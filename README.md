@@ -5,6 +5,10 @@ the internal objects. It is useful in the context of the `pdpy` project, with
 possible other uses like autocomplete, error check when typing, etc. In the
 following text there is a brief description of the JSON data structure.
 
+## Grab the database
+
+Simply run `wget https://raw.githubusercontent.com/fdch/pddb/main/pddb.json`
+
 ## Run
 
 1. Clone or download the [Pure Data distribution](https://github.com/pure-data/pure-data)
