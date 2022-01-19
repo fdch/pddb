@@ -5,5 +5,5 @@
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 """ Pure Data Database """
-from client import *
-from pddb import *
+from .client import *
+from .pddb import *
