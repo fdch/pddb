@@ -5,6 +5,34 @@ the internal objects. It is useful in the context of the `pdpy` project, with
 possible other uses like autocomplete, error check when typing, etc. In the
 following text there is a brief description of the JSON data structure.
 
+## Live querying
+
+Simply run `make start`, start typing your queries.
+You should see a message like this on your Terminal:
+
+```sh
+Starting live database...
+Type your queries, eg: osc~, and hit RETURN to get the result.
+Type QUIT and hit RETURN to quit.
+Starting server...
+Starting client...
+Listening on 127.0.0.1:9226
+Connected by ('127.0.0.1', 61874)
+```
+
+For example, when typing `osc~` and hitting return, this is the result:
+
+```sh
+osc~
+Received: [True, namespace(inlets=2, outlets=1), 1]
+```
+
+Which means that `osc~`
+
+- is an object --> `True`
+- has 2 inlets and 1 outlet --> `namespace(inlets=2, outlets=1))`
+- takes 1 optional creation argument --> `1`
+
 ## Grab the database
 
 Simply run `wget https://raw.githubusercontent.com/fdch/pddb/main/pddb.json`
