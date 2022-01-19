@@ -45,7 +45,7 @@ Simply run `wget https://raw.githubusercontent.com/fdch/pddb/main/pddb.json`
 
 ```bash
 cd pddb
-make
+make PDDIR=/path/to/pure-data
 ```
 
 Where `/path/to/pure-data` is the path to *your* Pure Data distribution.

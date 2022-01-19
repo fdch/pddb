@@ -1,12 +1,9 @@
+EXEC=/bin/bash
+PYEX=/usr/local/bin/python3
 # The path to the pure data source code distribution
 PDDIR=~/Development/pure-data
 # The file name for the database
 NAME=pddb.json
-# -----------------------------------------------------------------------------
-# Should not have to edit these:
-# -----------------------------------------------------------------------------
-EXEC=/bin/bash
-PYEX=/usr/local/bin/python3
 # The path to the current directory
 CDIR=$(shell pwd)
 # The path to the source code
@@ -21,6 +18,10 @@ PDDB_CLIENT=client.py
 OUTPUT=$(CDIR)/$(NAME)
 # -----------------------------------------------------------------------------
 .SILENT:
+all:
+	cd $(SRCDIR); $(EXEC) $(PDDB_MAKER) $(PDDIR) $(OUTPUT)
+	if [[ -f $(OUTPUT) ]]; then echo "Successfully created $(NAME)"; \
+	else echo "Failed to create $(NAME)"; fi
 start:
 	@echo "Starting live database..."
 	@echo "Type your queries, eg: osc~, and hit RETURN to get the result."
@@ -33,7 +34,3 @@ server:
 client:
 	@echo "Starting client..."
 	$(PYEX) $(SRCDIR)/$(PDDB_CLIENT)
-all:
-	cd $(SRCDIR); $(EXEC) $(PDDB_MAKER) $(PDDIR) $(OUTPUT)
-	if [[ -f $(OUTPUT) ]]; then echo "Successfully created $(NAME)"; \
-	else echo "Failed to create $(NAME)"; fi
