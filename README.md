@@ -9,7 +9,7 @@ following text there is a brief description of the JSON data structure.
 
 Simply run `wget https://raw.githubusercontent.com/fdch/pddb/main/pddb.json`
 
-## Run
+## Make the database
 
 1. Clone or download the [Pure Data distribution](https://github.com/pure-data/pure-data)
 2. Clone or download this repository.
@@ -17,7 +17,7 @@ Simply run `wget https://raw.githubusercontent.com/fdch/pddb/main/pddb.json`
 
 ```bash
 cd pddb
-./pddb.sh /path/to/pure-data
+make
 ```
 
 Where `/path/to/pure-data` is the path to *your* Pure Data distribution.

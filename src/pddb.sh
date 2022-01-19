@@ -8,8 +8,6 @@
 # it is meant to be used with the get_internals.py script
 # as well as the pdpy.py script
 
-SRC="./src"
-
 # The path to your Pure Data distribution
 if [[ -d $1 ]]; then
   PD_PATH=$1
@@ -17,20 +15,25 @@ else
   PD_PATH=~/Development/pure-data
 fi
 
+# The path to the pddb database
+if [[ $2 ]]; then
+  PDDB_FILE=$2
+else
+  PDDB_FILE="./pddb.json"
+fi
+
 echo Using Pure Data path: "$PD_PATH"
+echo Using pddb database: "$PDDB_FILE"
 echo ...
 
 # The path to the get_internals file
-GET_INTERNALS="${SRC}/get_internals.py"
+GET_INTERNALS="get_internals.py"
 
 # The path to the pddb python script
-PDDB="${SRC}/pddb.py"
+PDDB="generate.py"
 
 # The path to python3
 PY="/usr/local/bin/python3"
-
-# The path to the pddb database
-PDDB_FILE="./pddb.json"
 
 # Check if the Pure Data path is valid
 if [[ ! -d $PD_PATH ]]; then
@@ -62,7 +65,7 @@ rm /tmp/inter
 
 # Try to run the get_internals script with the temp internals file
 if [[ ! -f $GET_INTERNALS ]]; then
-  echo "get_internals.py is not present in ${SRC}"
+  echo "get_internals.py is not present"
 else
   echo "Running $GET_INTERNALS"
   $PY $GET_INTERNALS /tmp/internals /tmp/internals.json
@@ -71,7 +74,7 @@ fi
 
 # Try to run the pddb script with the temp internals and args files
 if [[ ! -f $PDDB ]]; then
-  echo "pddb.py is not present in ${SRC}"
+  echo "generate.py is not present"
 else
   echo "Running $PDDB"
   $PY $PDDB /tmp/args /tmp/internals.json $PDDB_FILE
