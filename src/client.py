@@ -7,21 +7,24 @@
 """ Pure Data Live Database Client """
 
 import socket
-import sys
 import pickle
 
-HOST = '127.0.0.1'  # The server's hostname or IP address
-PORT = 9226         # The port used by the server
+__all__ = ['connect']
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-  s.connect((HOST, PORT))
-  while True:
-    x = input()
-    if x == 'quit()' or x == 'QUIT' or x == 'EXIT':
-      s.close()
-      sys.exit()
-    s.sendall(x.encode('utf-8'))
-    data = s.recv(1024)
-    data = pickle.loads(data)
-    print('Received:', repr(data))
-  s.close()
+def connect(host='127.0.0.1', port=9226, callback=print):
+  """ Connect to the socket server """
+  with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    # The server's hostname or IP address and the port used by the server
+    s.connect((host, port))
+    while True:
+      x = input()
+      if x == 'quit()' or x == 'QUIT' or x == 'EXIT': break
+      s.sendall(x.encode('utf-8'))
+      data = s.recv(1024)
+      data = pickle.loads(data)
+      callback(data)
+    s.close()
+  return
+
+if __name__ == '__main__':
+  connect()

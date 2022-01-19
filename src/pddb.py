@@ -11,6 +11,8 @@ from types import SimpleNamespace
 import socket
 import pickle
 
+__all__ = ['PDDB']
+
 class PDDB(object):
   """ Pure Data Live Database """
   def __init__(self, dbname=None, host='127.0.0.1', port=9226, listen=True):
