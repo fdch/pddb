@@ -1,4 +1,9 @@
-# Open the file 'pddb.json' and load its contents to 'data'.
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# **************************************************************************** #
+# This file is part of the pdpy project
+# Copyright (C) 2021 Fede Camara Halac
+# **************************************************************************** # Open the file 'pddb.json' and load its contents to 'data'.
   
 import json
 

@@ -113,6 +113,31 @@ class PDDB(object):
                 return c.attributes.iolets
     return False
 
+  def internals(self):
+    """ Returns all Pure Data internals detected in ``self.db``
+    """
+    classes = [e.classes for e in self.db]
+    _f = lambda item: list(filter(lambda x: x not in (None, "\"") and "\"" not in x and "(" not in x and not str(x).startswith("obj"), item))
+    names = []
+    for c in classes:
+      for cname in c:
+        if isinstance(cname.attributes, list):
+          for a in cname.attributes:
+            if hasattr(a,"arguments"):
+              if hasattr(a.arguments, "name"):
+                names.append(a.arguments.name)
+              else:
+                names.append(a.arguments)
+            elif hasattr(a, "newmethod"):
+              names.append(a.newmethod)
+            else:
+              names.append(cname.className)
+        else:
+          names.append(cname.className)
+    self.all_internals = list(sorted(_f(names)))
+    return self.all_internals
+
+
 if __name__ == "__main__":
   import sys
   pddb = PDDB(dbname=sys.argv[1])

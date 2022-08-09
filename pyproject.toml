@@ -1,0 +1,24 @@
+[build-system]
+requires = [
+  "setuptools>=61.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pddb"
+version ="0.0.1"
+authors = [
+  { name="Fede Camara Halac", email="fdch@nyu.edu" },
+]
+description = "A Pure Data internal objects database"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pdpy-org/pddb"
+"Bug Tracker" = "https://github.com/pdpy-org/pddb/issues"
