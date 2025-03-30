@@ -1,3 +1,8 @@
+
+This repository has been archived in favor of https://github.com/pdpy-org/pddb
+
+---
+
 # PDDB - Pure Data Data Base Specification
 
 `pddb` is a JSON database that parses the Pure Data source code to get data about
